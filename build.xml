@@ -38,21 +38,18 @@
 	<target name="jar" depends="compile">
 		<jar destfile="${dist.dir}\TesteDoAnt.jar" basedir="${build.dir}">
 			<manifest>
-				<attribute name="Main-class" value="test.Main" />
+				<attribute name="Main-class" value="sociedade.Pessoa" />
 			</manifest>
 		</jar>
 	</target>
 	
-	<target name="war" depends="compile">
-		<war destfile="${war.dir}\Teste.war" webxml="WebContent\Web-INF\web.xml">
-			<fileset>
-			
-			</fileset>
-		</war>
-	</target>
-
-	<target name="main" depends="compile, jar, docs">
+	<target name="run" depends="jar, docs, compile">
+    	<java jar="${dist.dir}\TesteDoAnt.jar" fork="true" />
+    </target>
+	
+	<!-- <target name="main" depends="run"> -->
+	<target name="main" depends="jar, docs, compile">
 		<description>Main target</description>
 	</target>
-  
+	
 </project>
